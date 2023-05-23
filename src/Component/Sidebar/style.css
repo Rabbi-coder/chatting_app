@@ -1,0 +1,112 @@
+.sidebar {
+  width: 100%;
+  background-color: var(--primary-color);
+  height: 100vh;
+  padding: 30px 0;
+  box-sizing: border-box;
+}
+.sidebar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+.profile_details {
+  text-align: center;
+}
+.profile_details h4 {
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
+  font-family: var(--primary-font);
+  line-height: 25px;
+}
+.profile_picture {
+  height: 100px;
+  width: 100px;
+  background-color: azure;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+.profile_picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.profile_picture:hover .profile_overlay {
+  opacity: 1;
+}
+.profile_overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(27, 27, 27, 0.5);
+  transition: all linear 0.3s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+.profile_overlay svg {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+.profile_icons {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+.profile_icons svg {
+  height: 40px;
+  width: 40px;
+  fill: white;
+}
+.logout {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.logout svg {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+.profile_icons.active:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 133px;
+  height: 65px;
+  z-index: -1;
+  opacity: 1;
+}
+.profile_icons.active:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: var(--primary-color);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 8px;
+  height: 65px;
+  opacity: 1;
+}
+.profile_icons.active svg path {
+  fill: var(--primary-color);
+}

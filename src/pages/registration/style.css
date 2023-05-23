@@ -1,0 +1,58 @@
+.registration {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registration h1 {
+  font-family: var(--primary-font);
+  color: var(--black-color);
+  margin-bottom: 25px;
+}
+.registration h3 {
+  font-family: var(--primary-font);
+  color: var(--black-color);
+  margin-bottom: 20px;
+  color: var(--subtext-color);
+}
+.regi_btn button {
+  padding: 15px 0 !important;
+  border-radius: 50px !important;
+  margin-top: 20px !important;
+  background-color: var(--primary-color) !important;
+}
+.registration p {
+  color: var(--black-color);
+  font-family: var(--primary-font);
+  margin-top: 20px;
+}
+.registration p span {
+  color: var(--orange-color);
+  font-family: var(--primary-font);
+}
+.auth {
+  text-align: center;
+}
+.error {
+  color: red !important;
+}
+.password_feild {
+  position: relative;
+}
+.eye_off {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.confirm_password_feild {
+  position: relative;
+}
+.confirm_eye_off {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

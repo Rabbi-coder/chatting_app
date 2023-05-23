@@ -1,0 +1,72 @@
+.login {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login h1 {
+  font-family: var(--primary-font);
+  color: var(--black-color);
+  margin-bottom: 25px;
+}
+.log_btn button {
+  padding: 15px 0 !important;
+  border-radius: 50px !important;
+  margin-top: 20px !important;
+  background-color: var(--primary-color) !important;
+}
+.login p {
+  color: var(--black-color);
+  font-family: var(--primary-font);
+  margin-top: 20px;
+}
+.login p span {
+  color: var(--orange-color);
+  font-family: var(--primary-font);
+}
+.error {
+  color: red !important;
+}
+.forgot_pass span {
+  color: var(--black-color);
+  font-family: var(--primary-font);
+}
+.forgot_pass {
+  padding: 10px 0;
+}
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 8px 0;
+  font-family: var(--primary-font);
+  cursor: pointer;
+}
+.google span {
+  margin-left: 5px;
+}
+.facebook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 8px 0 8px 14px;
+  font-family: var(--primary-font);
+  cursor: pointer;
+}
+.facebook span {
+  margin-left: 8px;
+}
+.github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 8px 0 8px 14px;
+  font-family: var(--primary-font);
+  cursor: pointer;
+}
+.github span {
+  margin-left: 8px;
+}

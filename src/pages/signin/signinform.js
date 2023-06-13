@@ -95,7 +95,7 @@ const SigninForm = () => {
       });
   };
   const handlePassShow = () => {
-    if (passwordShow == "password") {
+    if (passwordShow === "password") {
       setPasswordShow("text");
     } else {
       setPasswordShow("password");
@@ -151,15 +151,14 @@ const SigninForm = () => {
               value={formik.values.password}
             />
             <div className="eye_off" onClick={handlePassShow}>
-              {passwordShow == "password" ? <FiEyeOff /> : <FiEye />}
+              {passwordShow === "password" ? <FiEyeOff /> : <FiEye />}
             </div>
           </div>
           {formik.errors.password && formik.touched.password && (
             <p className="error">{formik.errors.password}</p>
           )}
           <div className="forgot_pass">
-            <span>Forgot Password</span>
-          </div>
+            <Link to="/forgetpassword" >Forgot Password ?</Link></div>
           <div className="google" onClick={handleGoogle}>
             <Google />
             <span>Sign in with Google</span>

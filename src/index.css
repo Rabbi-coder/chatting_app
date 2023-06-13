@@ -2,9 +2,16 @@
   --primary-font: "Nunito", sans-serif;
   --primary-color: #5f35f5;
   --black-color: #333;
-  --white-color: #ffff;
+  --white-color: #fcfcfcfc;
   --orange-color: #ea6c00;
   --subtext-color: #b5b5b5;
+  --group-list-color: #f2f2f2;
+  --searchbox-bg:#ebebeb;
+  --border-color: #bebebe;
+  --crosse-clr:#e3e3e3;
+}
+body{
+  background-color: var(--white-color);
 }
 * {
   margin: 0;

@@ -7,18 +7,22 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile
 } from "firebase/auth";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 import { useNavigate, Link } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getDatabase, ref, set } from "firebase/database";
+import { useSelector } from "react-redux";
 
 const Forms = () => {
   const auth = getAuth();
   const [passwordShow, setPasswordShow] = useState("password");
   const [confirmPasswordShow, setConfirmPasswordShow] = useState("password");
   const [loading, setLoading] = useState(false);
+  const db = getDatabase();
   const navigate = useNavigate();
   let initialValues = {
     email: "",
@@ -54,21 +58,37 @@ const Forms = () => {
       formik.values.email,
       formik.values.password
     )
-      .then(() => {
-        sendEmailVerification(auth.currentUser).then(() => {
-          toast.success("Email has sent", {
-            position: "bottom-center",
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+      .then(({user}) => {
+        updateProfile(auth.currentUser, {
+          displayName: formik.values.fullname, 
+        }).then(()=>{
+          setLoading(true);
+          sendEmailVerification(auth.currentUser).then(() => {
+            set(ref(db, 'users/' + user.uid), {
+              username: user.displayName,
+              email: user.email,
+            }).then(()=>{
+              toast.success("Email has sent", {
+                position: "bottom-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              setTimeout(() => {
+                navigate("/login");
+              }, 5600);
+              setLoading(false);
+            });
         });
-        navigate("/login");
-        setLoading(false);
+        
+        
+
+        })
+        
       })
       .catch((error) => {
         if (error.message.includes("auth/email-already-in-use")) {

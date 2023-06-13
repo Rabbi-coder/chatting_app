@@ -5,7 +5,7 @@ export const signup = Yup.object({
   email: Yup.string()
     .email()
     .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
       "please use a valid email"
     )
     .required("please enter your email"),

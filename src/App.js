@@ -11,6 +11,8 @@ import RootLayout from "./Component/Rootlayout";
 import Chat from "./pages/chat/chat";
 import Notloggedinuser from "./privaterouter/Notloggedinuser";
 import Loggedinuser from "./privaterouter/Loggedinusers";
+import ForgetPassword from "./pages/forgetpassword";
+
 
 function App() {
   const router = createBrowserRouter(
@@ -25,6 +27,7 @@ function App() {
         <Route element={<Notloggedinuser />}>
           <Route path="/Signup" element={<Registration />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/forgetpassword" element={<ForgetPassword/>}></Route>
         </Route>
       </Route>
     )

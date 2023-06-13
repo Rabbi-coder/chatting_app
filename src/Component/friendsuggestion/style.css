@@ -1,0 +1,90 @@
+.friendsuggestion{
+    width: 100%;
+    background-color: var(--group-list-color) ;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 450px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, .25);
+}
+.friendsuggestion_header h2{
+    font-family: var(--primary-font);
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--black-color);
+}
+
+.friendsuggestion_searchBoxes{
+    display: flex;
+    align-items: center;
+    background-color: var(--searchbox-bg);
+    padding: 8px 0;
+    justify-content: center;
+    border-radius: 50px;
+    margin-top: 20px;
+    width: 80%;
+}
+.friendsuggestion_searchBoxes input{
+    border: none;
+    outline: none;
+    background-color: var(--searchbox-bg);
+    width: 80%;
+    padding: 8px 0;
+    font-family: var(--primary-font);
+    font-size: 14px;
+}
+.friendsuggestion_searchBoxes svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.friendsuggestion_body{
+    margin-top: 30px;
+    height: 270px;
+    overflow-y: auto;
+}
+.friendsuggestion_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+}
+.friendsuggestion_img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: brown;
+    border: 2px solid #333;
+}
+.friendsuggestion_img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.friendsuggestion_title{
+    width: 200px;
+}
+.friendsuggestion_title h4{
+    font-family: var(--primary-font);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black-color);
+    margin-bottom: 8px;
+}
+.friendsuggestion_title span{
+    font-family: var(--primary-font);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black-color);
+}
+.friendsuggestion_join button{
+    margin-right: 5px;
+}
+.friendsuggestion_join button:last-child{
+    margin-right: 5px;
+}

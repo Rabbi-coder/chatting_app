@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import SidebarIcons from "./SidebarIcons";
 import { AiOutlineUpload } from "react-icons/ai";
 import { CiLogout } from "react-icons/ci";
 import { getAuth, signOut } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Loginusers } from "../../Features/Slice/userSlice";
 import { useNavigate } from "react-router-dom";
 import Modals from "../Modal";
@@ -20,20 +20,23 @@ const Sidebar = () => {
       navigate("/login");
     });
   };
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const user =useSelector((users)=>users.login.loggedIn)
   return (
     <>
       <div className="sidebar">
         <div className="sidebar_wrapper">
           <div className="profile_details">
-            <div className="profile_picture">
+            <div className="profile_picture" onClick={handleOpen}>
               <picture>
-                <img src="/Assetes/profilepicture.jpg" alt="profile pic" />
+                <img src= {user.photoURL} />
               </picture>
               <div className="profile_overlay">
                 <AiOutlineUpload />
               </div>
             </div>
-            <h4>Abdullah Al Rabbi</h4>
+            <h4>{user.displayName}</h4>
           </div>
           <div className="profiles_icons">
             <SidebarIcons />
@@ -42,7 +45,7 @@ const Sidebar = () => {
             <CiLogout />
           </div>
         </div>
-        {/* <Modals /> */}
+        <Modals open={open} setOpen={setOpen} />
       </div>
     </>
   );

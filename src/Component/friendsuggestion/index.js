@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import "./style.css"
 import { AiOutlineSearch } from 'react-icons/ai';
-import { getDatabase, ref, onValue, set, push, remove, orderByChild } from "firebase/database";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
 import { useSelector } from 'react-redux';
 
 const FriendsSuggestion = () => {
@@ -10,6 +10,7 @@ const FriendsSuggestion = () => {
   const user = useSelector((users) => users.login.loggedIn)
   const [filterUser, setfilterUser] = useState([])
   const [frndreq, setFrndReq] = useState([])
+  const [frndgid, setFrndGid] = useState([])
   const db = getDatabase();
   useEffect(() => {
     const starCountRef = ref(db, "users");
@@ -23,6 +24,7 @@ const FriendsSuggestion = () => {
       setuserLists(userArray)
     });
   }, [])
+
 
 
 
@@ -45,14 +47,17 @@ const FriendsSuggestion = () => {
   // send friend request//
 
   const handleSendRequest = (item) => {
+    console.log(item, "send req");
+    const db = getDatabase()
     set(push(ref(db, 'friendrequest')), {
       sendername: user.displayName,
       senderid: user.uid,
       recivername: item.username,
-      reciverid: item.id
+      reciverid: item.id,
+
+
     });
   }
-
 
   //friend request show//
 
@@ -66,19 +71,31 @@ const FriendsSuggestion = () => {
       setFrndReq(friendrequestArray)
     });
   }, [])
+  console.log(frndreq, "data de");
 
   //request cancel//
+  useEffect(() => {
+    const frenRef = ref(db, "friendrequest")
+    onValue(frenRef, (snapshot) => {
+      setFrndGid("")
+      let array = []
+      snapshot.forEach((item) => {
+        array.push({ key: item.key })
+
+        console.log(item.key, "data dhorsi");
+      })
+      setFrndGid(array)
+
+    })
+    console.log(frndgid, "main data");
+  }, [])
+
+  const handleCancelReq = (iitem, i) => {
 
 
-  const handleCancelReq = (item) => {
-    remove(ref(db, 'friendrequest/'), {
-      sendername: user.displayName,
-      senderid: user.uid,
-      recivername: item.username,
-      reciverid: item.id
-    });
-
-  }
+    // remove(ref(db, 'friendrequest/'))
+    console.log(frndgid, "main id");
+  };
 
 
   return (
@@ -108,21 +125,29 @@ const FriendsSuggestion = () => {
             </div>
           ))
             : userlists.map((item, i) => (
+
+
               <div className="friendsuggestion_wrapper" key={i}>
                 <div className="friendsuggestion_img">
                   <img src="/Assetes/pp3.jpg" alt="avatar" />
                 </div>
                 <div className="friendsuggestion_title">
                   <h4>{item.username}</h4>
-
+                  {console.log(item, "data")}
                 </div>
+
                 <div className="friendsuggestion_join">
+
                   {
                     frndreq.includes(item.id + user.uid) || frndreq.includes(user.uid + item.id) ? (
-                      <Button color='error' variant="contained" onClick={() => handleCancelReq(item)} >Cancel</Button>
+
+
+                      <Button color='error' variant="contained" onClick={handleCancelReq} >Cancel</Button>
+
                     ) : (
                       <Button variant="contained" onClick={() => handleSendRequest(item)}>Add</Button>
                     )
+
                   }
 
                 </div>
